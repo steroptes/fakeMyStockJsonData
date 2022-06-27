@@ -1,6 +1,59 @@
 
 {
-    "User": {
-      "title": { "string": {} }
+    "Warehouses":{
+        "_id": {
+            "regexp" : "[1-9][A-Z][0-9][A-Za-z]{2}[0-9][a-z]{10,20}"
+        },
+        "name":{
+            "string" : ["Warehouse 1","Warehouse 2","Warehouse 3","Warehouse 4"]
+        }
+    },
+    "QtyStockedInWH": {
+        "warehouse" : {
+            "belongsTo" : "Warehouses"
+        },
+        "stockInWH" : {
+            "int" : { "min": 0, "max": 1000 }
+        },
+        "numberOfBoxesInWH": {
+            "int" : { "min": 0, "max": 999 }
+        }
+    },
+    "Products":{
+        "_id": {
+            "regexp" : "[1-9]{13}[A-Za-z]{2}"
+        },
+        "barCode": {
+            "regexp" : "[1-9]{13}"
+        },
+        "name":{
+            "regexp" : "[Product][0-9]{3}"
+        },
+        "warehouses" : {
+            "hasMany" : "Warehouses"
+        },
+        "totalStock" :{
+            "int" : { "min": 0, "max": 9999 }
+        },
+        "stockDetail":{
+            "hasMany" : "QtyStockedInWH"
+        } 
+    },
+    "Users":{
+        "_id": {
+            "regexp" : "[1-9][A-Z][0-9][A-Za-z]{2}[0-9][a-z]{10,20}"
+        },
+        "name":{
+            "regexp" : "[User][0-9]{3}"
+        },
+        "email": { 
+            "regexp": "[a-z]{5,10}@[a-z]{5}\\.[a-z]{2,3}" 
+        },
+        "isAdmin": { 
+            "boolean": {} 
+        } 
     }
-  }
+    
+}
+    
+
