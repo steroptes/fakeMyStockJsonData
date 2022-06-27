@@ -25,9 +25,7 @@
         "totalStock" :{
             "int" : { "min": 0, "max": 9999 }
         },
-        "stockDetail":{
-            "hasMany" : "QtyStockedInWH"
-        } 
+       
     },
     "Users":{
         "_id": {
