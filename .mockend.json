@@ -8,7 +8,17 @@
             "string" : ["Warehouse 1","Warehouse 2","Warehouse 3","Warehouse 4"]
         }
     },
-    
+    "QtyStockedInWH": {
+        "warehouse" : {
+            "belongsTo" : "Warehouses"
+        },
+        "stockInWH" : {
+            "int" : { "min": 0, "max": 1000 }
+        },
+        "numberOfBoxesInWH": {
+            "int" : { "min": 0, "max": 999 }
+        }
+    },
     "Products":{
         "_id": {
             "regexp" : "[1-9]{13}[A-Za-z]{2}"
@@ -24,8 +34,10 @@
         },
         "totalStock" :{
             "int" : { "min": 0, "max": 9999 }
-        }
-       
+        },
+        "stockDetail":{
+            "hasMany" : "QtyStockedInWH"
+        } 
     },
     "Users":{
         "_id": {
