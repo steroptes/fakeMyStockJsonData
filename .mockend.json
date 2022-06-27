@@ -24,7 +24,7 @@
         },
         "totalStock" :{
             "int" : { "min": 0, "max": 9999 }
-        },
+        }
        
     },
     "Users":{
